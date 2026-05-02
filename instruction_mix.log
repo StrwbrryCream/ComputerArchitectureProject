@@ -1,0 +1,13 @@
+Instruction Count
+--------------------
+Arithmetic: 19
+Memory: 4
+Branch: 3
+Jump: 2
+====================
+Instruction Percentages
+--------------------
+Arithmetic: 68%
+Memory: 14%
+Branch: 11%
+Jump: 7%
