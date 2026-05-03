@@ -1,13 +1,13 @@
 Instruction Count
 --------------------
-Arithmetic: 19
-Memory: 4
-Branch: 3
-Jump: 2
+Arithmetic: 5
+Memory: 0
+Branch: 0
+Jump: 0
 ====================
 Instruction Percentages
 --------------------
-Arithmetic: 67.86%
-Memory: 14.29%
-Branch: 10.71%
-Jump: 7.14%
+Arithmetic: 100.0%
+Memory: 0.0%
+Branch: 0.0%
+Jump: 0.0%

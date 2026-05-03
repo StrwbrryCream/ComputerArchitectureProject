@@ -1,0 +1,25 @@
+0 | pc=0x00000000 | instr=0x01400093 | addi
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ADDI res=20
+wb=1<-20
+next_pc=0x00000004
+1 | pc=0x00000004 | instr=0x0200C133 | div
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=DIV res=-1
+wb=2<--1
+next_pc=0x00000008
+2 | pc=0x00000008 | instr=0x0200E1B3 | mod
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=MOD res=20
+wb=3<-20
+next_pc=0x0000000C
+3 | pc=0x0000000C | instr=0x00300213 | addi
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ADDI res=3
+wb=4<-3
+next_pc=0x00000010
+4 | pc=0x00000010 | instr=0x0240C2B3 | div
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=DIV res=6
+wb=5<-6
+next_pc=0x00000014

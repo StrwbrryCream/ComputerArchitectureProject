@@ -347,19 +347,22 @@ def alu_exec(op, a, b):
     if op == "ADD" or op == "ADDI":
         return a + b
     elif op == "MUL":
-        result = a * b
-        #out of bounds handling, simply returns 0 to the destination register
-        if result <= 2147483647 and result >= -2147483648:
-            return result
-        else:
-            return 0
+        return a * b
     elif op == "DIV":
-        #division in riscv32 rounds towards 0, floating point numbers are excluded due to time limitations
-        return a//b
+        #division in riscv32 rounds to the whole number towards 0, i.e. 10/4 = 2
+        if b != 0:
+            return a//b
+        #riscv32 does not exception handle for division by 0, instead it simply returns 0xFFFFFFFF, or -1 since this is signed division
+        else:
+            return -1
     #This operation is referred to as "rem" in the official riscv32 instruction encodings, but we all know it as mod
     elif op == "MOD":
         #simply returns the remainder of the division of a and b
-        return a % b
+        if b != 0:
+            return a % b
+        #if mod by 0 is attempted, riscv32 returns the value stored in rs1 rather than raising an error
+        else:
+            return a
     elif op == "SUB":
         return a - b
     elif op == "AND" or op == "ANDI":
@@ -873,10 +876,10 @@ def main():
     instr_count.append(f"Memory: {memory_instructions}")
     instr_count.append(f"Branch: {branch_instructions}")
     instr_count.append(f"Jump: {jump_instructions}")
-    instr_mix.append(f"Arithmetic: {math.trunc(round(arithmetic_instructions/total_instructions*100, 0))}%")
-    instr_mix.append(f"Memory: {math.trunc(round(memory_instructions/total_instructions*100, 0))}%")
-    instr_mix.append(f"Branch: {math.trunc(round(branch_instructions/total_instructions*100, 0))}%")
-    instr_mix.append(f"Jump: {math.trunc(round(jump_instructions/total_instructions*100, 0))}%")
+    instr_mix.append(f"Arithmetic: {(round(arithmetic_instructions/total_instructions*100, 2))}%")
+    instr_mix.append(f"Memory: {(round(memory_instructions/total_instructions*100, 2))}%")
+    instr_mix.append(f"Branch: {(round(branch_instructions/total_instructions*100, 2))}%")
+    instr_mix.append(f"Jump: {(round(jump_instructions/total_instructions*100, 2))}%")
 
     write_trace_log(trace_lines)
     write_regs_log(regs)

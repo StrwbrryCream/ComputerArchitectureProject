@@ -1,0 +1,120 @@
+0 | pc=0x00000000 | instr=0x00A00513 | addi
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ADDI res=10
+wb=10<-10
+next_pc=0x00000004
+1 | pc=0x00000004 | instr=0x01400593 | addi
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ADDI res=20
+wb=11<-20
+next_pc=0x00000008
+2 | pc=0x00000008 | instr=0x00B50633 | add
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=ADD res=30
+wb=12<-30
+next_pc=0x0000000C
+3 | pc=0x0000000C | instr=0x40B506B3 | sub
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=SUB res=-10
+wb=13<--10
+next_pc=0x00000010
+4 | pc=0x00000010 | instr=0x00C5E733 | or
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=OR res=30
+wb=14<-30
+next_pc=0x00000014
+5 | pc=0x00000014 | instr=0x00C5F7B3 | and
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=AND res=20
+wb=15<-20
+next_pc=0x00000018
+6 | pc=0x00000018 | instr=0x00C5C833 | xor
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=XOR res=10
+wb=16<-10
+next_pc=0x0000001C
+7 | pc=0x0000001C | instr=0x00C59833 | sll
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=SLL res=21474836480
+wb=16<-21474836480
+next_pc=0x00000020
+8 | pc=0x00000020 | instr=0x40C5D8B3 | sra
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=SRA res=0
+wb=17<-0
+next_pc=0x00000024
+9 | pc=0x00000024 | instr=0x00C5A933 | slt
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=SLT res=1
+wb=18<-1
+next_pc=0x00000028
+10 | pc=0x00000028 | instr=0x00C5B9B3 | sltu
+RegW=1 MemR=0 MemW=0 ALUSrc=0 Br=0
+alu=SLTU res=1
+wb=19<-1
+next_pc=0x0000002C
+11 | pc=0x0000002C | instr=0xFFF50513 | addi
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ADDI res=4105
+wb=10<-4105
+next_pc=0x00000030
+12 | pc=0x00000030 | instr=0x00F5F513 | andi
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ANDI res=4
+wb=10<-4
+next_pc=0x00000034
+13 | pc=0x00000034 | instr=0x00F5E593 | ori
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=ORI res=31
+wb=11<-31
+next_pc=0x00000038
+14 | pc=0x00000038 | instr=0x00F5C613 | xori
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=XORI res=16
+wb=12<-16
+next_pc=0x0000003C
+15 | pc=0x0000003C | instr=0x00F5A693 | slti
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=SLTI res=0
+wb=13<-0
+next_pc=0x00000040
+16 | pc=0x00000040 | instr=0x00F5B713 | sltiu
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=SLTIU res=0
+wb=14<-0
+next_pc=0x00000044
+17 | pc=0x00000044 | instr=0x00151513 | slli
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=SLLI res=8
+wb=10<-8
+next_pc=0x00000048
+18 | pc=0x00000048 | instr=0x00155593 | srli
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=SRLI res=4
+wb=11<-4
+next_pc=0x0000004C
+19 | pc=0x0000004C | instr=0x40155593 | srai
+RegW=1 MemR=0 MemW=0 ALUSrc=1 Br=0
+alu=SRAI res=0
+wb=11<-0
+next_pc=0x00000050
+20 | pc=0x00000050 | instr=0x00C02023 | sw
+RegW=0 MemR=0 MemW=1 ALUSrc=1 Br=0
+alu=None res=0
+wb=0<-0
+next_pc=0x00000054
+21 | pc=0x00000054 | instr=0x00002683 | lw
+RegW=1 MemR=1 MemW=0 ALUSrc=1 Br=0
+alu=None res=0
+wb=13<-16
+next_pc=0x00000058
+22 | pc=0x00000058 | instr=0x00208663 | beq
+RegW=0 MemR=0 MemW=0 ALUSrc=0 Br=1
+alu=None res=0
+wb=0<-0
+next_pc=0x00000064
+23 | pc=0x00000064 | instr=0x0020D663 | bge
+RegW=0 MemR=0 MemW=0 ALUSrc=0 Br=1
+alu=None res=0
+wb=0<-0
+next_pc=0x00000070
