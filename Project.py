@@ -770,18 +770,28 @@ def load_imem_from_file(path):
 # Log Writers
 # ------------------------------------------------------------
 
-def write_trace_log(lines):
+def write_trace_log(lines, file_num):
 
-    f = open("trace.log", "w")
+    if file_num == 1:
+        f = open("trace.log", "w")
+    elif file_num == 2:
+        f = open("trace.log2", "w")
+    elif file_num == 3:
+        f = open("trace.log3", "w")
 
     for l in lines:
         f.write(l + "\n")
 
     f.close()
 
-def write_instruction_mix_log(icount, imix):
+def write_instruction_mix_log(icount, imix, file_num):
 
-    f = open("instruction_mix.log", "w")
+    if file_num == 1:
+        f = open("instruction_mix.log", "w")
+    elif file_num == 2:
+        f = open("instruction_mix.log2", "w")
+    elif file_num == 3:
+        f = open("instruction_mix.log3", "w")
 
     f.write("Instruction Count\n--------------------\n")
     for i in icount:
@@ -792,9 +802,14 @@ def write_instruction_mix_log(icount, imix):
         f.write(i + "\n")
 
 
-def write_regs_log(regs):
+def write_regs_log(regs, file_num):
 
-    f = open("regs_final.log", "w")
+    if file_num == 1:
+        f = open("regs_final.log", "w")
+    elif file_num == 2:
+        f = open("regs_final.log2", "w")
+    elif file_num == 3:
+        f = open("regs_final.log3", "w")
 
     for i in range(32):
         f.write("x%d = 0x%08X\n" % (i, regs[i]))
@@ -802,9 +817,14 @@ def write_regs_log(regs):
     f.close()
 
 
-def write_dmem_log(dmem):
+def write_dmem_log(dmem, file_num):
 
-    f = open("dmem_final.log", "w")
+    if file_num == 1:
+        f = open("dmem_final.log", "w")
+    elif file_num == 2:
+        f = open("dmem_final.log2", "w")
+    elif file_num == 3:
+        f = open("dmem_final.log3", "w")
 
     for a in sorted(dmem.keys()):
         f.write("0x%08X : 0x%08X\n" % (a, dmem[a]))
@@ -817,8 +837,20 @@ def write_dmem_log(dmem):
 # ------------------------------------------------------------
 
 def main():
+    not_chosen = True
+    while not_chosen:
+        demo_file_chosen = int(input("Choose which demo file to use: 1, 2, or 3"))
+        if demo_file_chosen == 1 or 2 or 3:
+            not_chosen = False
+        else:
+            print(f"That is not a valid file choice, try again")
 
-    imem = load_imem_from_file("hex_inst.txt")
+    if demo_file_chosen == 1:
+        imem = load_imem_from_file("hex_inst.txt")
+    elif demo_file_chosen == 2:
+        imem = load_imem_from_file("hex_inst2.txt")
+    elif demo_file_chosen == 3:
+        imem = load_imem_from_file("hex_inst3.txt")
 
     regs = [0] * 32
     dmem = {}
@@ -881,10 +913,10 @@ def main():
     instr_mix.append(f"Branch: {(round(branch_instructions/total_instructions*100, 2))}%")
     instr_mix.append(f"Jump: {(round(jump_instructions/total_instructions*100, 2))}%")
 
-    write_trace_log(trace_lines)
-    write_regs_log(regs)
-    write_dmem_log(dmem)
-    write_instruction_mix_log(instr_count, instr_mix)
+    write_trace_log(trace_lines, demo_file_chosen)
+    write_regs_log(regs, demo_file_chosen)
+    write_dmem_log(dmem, demo_file_chosen)
+    write_instruction_mix_log(instr_count, instr_mix, demo_file_chosen)
 
     print("HALT")
     print("steps =", steps)
